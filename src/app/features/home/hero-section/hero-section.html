@@ -34,7 +34,7 @@
           target="_blank"
           aria-label="[translate:Inscríbete]"
         >
-          {{ activeDescription().location }}
+          {{ activeDescription()?.location }}
         </a>
       </p>
       <p
@@ -59,7 +59,7 @@
   <!-- Columna derecha: oculta en móvil, visible en tablet y escritorio -->
   <div
     class="hidden md:flex relative min-h-[50vh] items-center justify-center"
-    [style.backgroundImage]="'url(' + activeDescription().backgroundPath + ')'"
+    [style.backgroundImage]="'url(' + activeDescription()?.backgroundPath + ')'"
     style="background-position: center; background-size: cover"
   >
     <div class="absolute inset-0 bg-black opacity-50"></div>
@@ -67,8 +67,7 @@
       class="relative z-10 flex w-full h-full items-center justify-center p-4 md:p-8"
     >
       <img
-        [src]="activeDescription().posterPath"
-        [alt]="'[translate:Cartel oficial] ' + activeDescription().name"
+        [src]="activeDescription()?.posterPath"
         class="shadow-lg max-w-[85vw] max-h-[75vh] rounded cursor-zoom-in transition-transform duration-300"
         (click)="showPosterZoom()"
       />
@@ -87,8 +86,7 @@
     (click)="$event.stopPropagation()"
   >
     <img
-      [src]="activeDescription().posterPath"
-      [alt]="'[translate:Cartel oficial] ' + activeDescription().name"
+      [src]="activeDescription()?.posterPath"
       class="shadow-2xl rounded-lg transition-transform duration-300"
       [style.transform]="'scale(' + zoomLevel() + ')'"
       (wheel)="onWheelZoom($event)"
