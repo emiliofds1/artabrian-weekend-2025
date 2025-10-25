@@ -25,23 +25,23 @@ export class LocationSectionComponent implements AfterViewInit, OnChanges {
   galleryContainer!: ElementRef<HTMLDivElement>;
 
   imagePaths: string[] = [
-    'assets/images/event/02-Image-event.jpg',
-    'assets/images/event/03-Image-event.jpg',
-    'assets/images/event/04-Image-event.jpg',
-    'assets/images/event/05-Image-event.jpg',
-    'assets/images/event/06-Image-event.jpg',
-    'assets/images/event/07-Image-event.jpg',
-    'assets/images/event/08-Image-event.jpg',
-    'assets/images/event/09-Image-event.jpg',
-    'assets/images/event/10-Image-event.jpg',
-    'assets/images/event/11-Image-event.jpg',
-    'assets/images/event/12-Image-event.jpg',
-    'assets/images/event/13-Image-event.jpg',
-    'assets/images/event/14-Image-event.jpg',
+    'assets/images/event/02-event.jpg',
+    'assets/images/event/03-event.jpg',
+    'assets/images/event/04-event.jpg',
+    'assets/images/event/05-event.jpg',
+    'assets/images/event/06-event.jpg',
+    'assets/images/event/07-event.jpg',
+    'assets/images/event/08-event.jpg',
+    'assets/images/event/09-event.jpg',
+    'assets/images/event/10-event.jpg',
+    'assets/images/event/11-event.jpg',
+    'assets/images/event/12-event.jpg',
+    'assets/images/event/13-event.jpg',
+    'assets/images/event/14-event.jpg',
   ];
 
   currentIndex = 0;
-  imageTransitioning = false;
+  imageTransitioning = true;
   fullscreenMode = false;
 
   ngAfterViewInit() {
