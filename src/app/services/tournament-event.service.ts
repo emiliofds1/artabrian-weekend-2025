@@ -8,7 +8,7 @@ import { TournamentEvent } from '../models/tournament-event.model';
   providedIn: 'root',
 })
 export class TournamentEventService {
-  private jsonUrl = '/assets/data/tournament-event.json';
+  private jsonUrl = 'assets/data/tournament-event.json';
 
   constructor(private http: HttpClient) {}
 

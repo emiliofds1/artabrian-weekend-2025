@@ -41,7 +41,7 @@ export class Home {
 
   activeSection = signal<string>('home');
   locationJson = {
-    backgroundPath: '/assets/images/location/location.jpg',
+    backgroundPath: 'assets/images/location/location.jpg',
     adress: 'San Pedro de Leixa 82, 15405 Ferrol, Galicia',
     geopath: 'https://maps.app.goo.gl/2YgpBSwLQirCn7wo7',
   };
