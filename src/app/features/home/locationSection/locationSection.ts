@@ -9,8 +9,10 @@ import {
   HostListener,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { HttpClient } from '@angular/common/http';
 import { TournamentLocation } from '../../../models/tournament-location.model';
 import MapComponent from '../../../components/map/mapComponent';
+import { firstValueFrom } from 'rxjs';
 
 @Component({
   selector: 'location-section',
@@ -20,33 +22,30 @@ import MapComponent from '../../../components/map/mapComponent';
 })
 export class LocationSectionComponent implements AfterViewInit, OnChanges {
   @Input() locationData: TournamentLocation | null = null;
-
   @ViewChild('galleryContainer', { static: false })
   galleryContainer!: ElementRef<HTMLDivElement>;
 
-  imagePaths: string[] = [
-    'assets/images/event/02-event.jpg',
-    'assets/images/event/03-event.jpg',
-    'assets/images/event/04-event.jpg',
-    'assets/images/event/05-event.jpg',
-    'assets/images/event/06-event.jpg',
-    'assets/images/event/07-event.jpg',
-    'assets/images/event/08-event.jpg',
-    'assets/images/event/09-event.jpg',
-    'assets/images/event/10-event.jpg',
-    'assets/images/event/11-event.jpg',
-    'assets/images/event/12-event.jpg',
-    'assets/images/event/13-event.jpg',
-    'assets/images/event/14-event.jpg',
-  ];
-
+  imagePaths: string[] = [];
   currentIndex = 0;
-  imageTransitioning = true;
+  imageTransitioning = false;
   fullscreenMode = false;
 
-  ngAfterViewInit() {
-    // Inicialización si es necesaria
+  constructor(private http: HttpClient) {
+    this.loadImages();
   }
+
+  async loadImages() {
+    try {
+      const images: string[] = await firstValueFrom(
+        this.http.get<string[]>('assets/images/event/images.json')
+      );
+      this.imagePaths = images.map((img) => `assets/images/event/${img}`);
+    } catch (err) {
+      console.error('Failed to load event images:', err);
+    }
+  }
+
+  ngAfterViewInit() {}
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes['locationData']) {
@@ -55,7 +54,6 @@ export class LocationSectionComponent implements AfterViewInit, OnChanges {
     }
   }
 
-  // Navegación con animación de transición
   goPrev() {
     this.imageTransitioning = true;
     setTimeout(() => {
@@ -87,7 +85,6 @@ export class LocationSectionComponent implements AfterViewInit, OnChanges {
     }
   }
 
-  // Fullscreen mode
   openFullscreen() {
     this.fullscreenMode = true;
   }
@@ -96,21 +93,13 @@ export class LocationSectionComponent implements AfterViewInit, OnChanges {
     this.fullscreenMode = false;
   }
 
-  // Navegación por teclado
   @HostListener('window:keydown', ['$event'])
   handleKeyboard(event: KeyboardEvent) {
-    if (event.key === 'ArrowLeft') {
-      this.goPrev();
-    }
-    if (event.key === 'ArrowRight') {
-      this.goNext();
-    }
-    if (event.key === 'Escape') {
-      this.closeFullscreen();
-    }
+    if (event.key === 'ArrowLeft') this.goPrev();
+    if (event.key === 'ArrowRight') this.goNext();
+    if (event.key === 'Escape') this.closeFullscreen();
   }
 
-  // Getters existentes
   get backgroundPath(): string {
     return this.locationData?.backgroundPath ?? '';
   }
