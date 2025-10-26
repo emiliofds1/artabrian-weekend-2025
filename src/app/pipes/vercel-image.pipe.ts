@@ -14,7 +14,6 @@ export class VercelImagePipe implements PipeTransform {
       src = '/' + src;
     }
 
-    const encodedUrl = encodeURIComponent(src);
-    return `/__vercel/image?url=${encodedUrl}&w=${width}&q=${quality}`;
+    return `/__vercel/image?url=${src}&w=${width}&q=${quality}`;
   }
 }
