@@ -20,7 +20,7 @@
         "description": "10% Recaudación en Ártabros + Material promocional"
       }
     ],
-    "backgroundPath": "assets/images/mtg/bg-trios.jpg"
+    "backgroundPath": "assets/images/mtg/bg-trios.webp"
   },
 
   {
@@ -40,7 +40,7 @@
         "description": "30 Ártabros"
       }
     ],
-    "backgroundPath": "assets/images/mtg/bg-8-man.jpg"
+    "backgroundPath": "assets/images/mtg/bg-8-man.webp"
   },
   {
     "id": "mtg",
@@ -75,7 +75,7 @@
         "description": "Material Promocional"
       }
     ],
-    "backgroundPath": "assets/images/mtg/bg-legacy.jpg"
+    "backgroundPath": "assets/images/mtg/bg-legacy.webp"
   },
   {
     "id": "mtg",
@@ -94,7 +94,7 @@
         "description": "30 Ártabros"
       }
     ],
-    "backgroundPath": "assets/images/mtg/bg-8-man.jpg"
+    "backgroundPath": "assets/images/mtg/bg-8-man.webp"
   },
 
   {
@@ -129,7 +129,7 @@
         "description": "Material Promocional"
       }
     ],
-    "backgroundPath": "assets/images/mtg/bg-standard.jpg"
+    "backgroundPath": "assets/images/mtg/bg-standard.webp"
   },
 
   {
@@ -165,7 +165,7 @@
         "description": "Material Promocional"
       }
     ],
-    "backgroundPath": "assets/images/mtg/bg-pauper.jpg"
+    "backgroundPath": "assets/images/mtg/bg-pauper.webp"
   },
 
   {
@@ -200,7 +200,7 @@
         "description": "Material Promocional"
       }
     ],
-    "backgroundPath": "assets/images/mtg/bg-modern.jpg"
+    "backgroundPath": "assets/images/mtg/bg-modern.webp"
   },
   {
     "id": "mtg",
@@ -219,7 +219,7 @@
         "description": "30 Ártabros"
       }
     ],
-    "backgroundPath": "assets/images/mtg/bg-8-man.jpg"
+    "backgroundPath": "assets/images/mtg/bg-8-man.webp"
   },
 
   {
@@ -242,7 +242,7 @@
         "description": "10% Recaudación en Ártabros + Material promocional"
       }
     ],
-    "backgroundPath": "assets/images/mtg/bg-premodern.jpg"
+    "backgroundPath": "assets/images/mtg/bg-premodern.webp"
   },
 
   {
