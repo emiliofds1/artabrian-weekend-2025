@@ -19,24 +19,27 @@ export class TournamentSectionComponent {
     initialValue: [],
   });
 
-  mtgEvents = computed(() => {
+  // Array of days for tabs
+  readonly days = ['viernes', 'sábado', 'domingo'] as const;
+
+  // Compute events by TCG and day
+  private eventsByDay = computed(() => {
     const id = this.tcgId ?? 'mtg';
-    return this.eventsSignal().filter((e) => e.id === id);
+    const events = this.eventsSignal().filter((e) => e.id === id);
+    return {
+      viernes: events.filter((e) => e.day.toLowerCase() === 'viernes'),
+      sábado: events.filter((e) => e.day.toLowerCase() === 'sábado' || e.day.toLowerCase() === 'sábado'),
+      domingo: events.filter((e) => e.day.toLowerCase() === 'domingo'),
+    };
   });
 
-  viernesEvents = computed(() =>
-    this.mtgEvents().filter((e) => e.day.toLowerCase() === 'viernes')
-  );
-  sabadoEvents = computed(() =>
-    this.mtgEvents().filter((e) => e.day.toLowerCase() === 'sábado')
-  );
-  domingoEvents = computed(() =>
-    this.mtgEvents().filter((e) => e.day.toLowerCase() === 'domingo')
-  );
+  viernesEvents = computed(() => this.eventsByDay().viernes);
+  sabadoEvents = computed(() => this.eventsByDay().sábado);
+  domingoEvents = computed(() => this.eventsByDay().domingo);
 
   selectedDay = signal<'viernes' | 'sábado' | 'domingo'>('viernes');
 
-  // Computed para excepción sábado MTG 4 eventos
+  // Exceptions
   isSabadoMtg4Eventos = computed(
     () =>
       this.selectedDay() === 'sábado' &&
@@ -44,26 +47,28 @@ export class TournamentSectionComponent {
       this.sabadoEvents().length === 4
   );
 
-  // Computed para excepción domingo MTG (tamaño aumentado)
   isDomingoMtgLarge = computed(
     () => this.selectedDay() === 'domingo' && this.tcgId === 'mtg'
   );
 
-  sabadoGridCols = computed(() => {
-    if (this.isSabadoMtg4Eventos()) {
-      return 'grid-cols-1 md:grid-cols-4 gap-4 lg:gap-6';
-    }
-    return this.tcgId === 'swu'
+  sabadoGridCols = computed(() =>
+    this.isSabadoMtg4Eventos()
+      ? 'grid-cols-1 md:grid-cols-4 gap-4 lg:gap-6'
+      : this.tcgId === 'swu'
       ? 'grid-cols-1 md:grid-cols-2 gap-12'
-      : 'grid-cols-1 md:grid-cols-4 gap-12';
-  });
+      : 'grid-cols-1 md:grid-cols-4 gap-12'
+  );
 
-  domingoGridCols = computed(() => {
-    if (this.isDomingoMtgLarge()) {
-      return 'grid-cols-1 md:grid-cols-3 gap-4 lg:gap-6';
-    }
-    return this.tcgId === 'swu'
+  domingoGridCols = computed(() =>
+    this.isDomingoMtgLarge()
+      ? 'grid-cols-1 md:grid-cols-3 gap-4 lg:gap-6'
+      : this.tcgId === 'swu'
       ? 'grid-cols-1 md:grid-cols-2 gap-12'
-      : 'grid-cols-1 md:grid-cols-3 gap-12';
-  });
+      : 'grid-cols-1 md:grid-cols-3 gap-12'
+  );
+
+  // trackBy for *ngFor
+  trackById(index: number, event: any) {
+    return event.id;
+  }
 }
