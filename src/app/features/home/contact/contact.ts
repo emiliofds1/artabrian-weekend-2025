@@ -1,11 +1,10 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { VercelImagePipe } from '../../../pipes/vercel-image.pipe';
 
 @Component({
   selector: 'contact-section',
   standalone: true,
-  imports: [FormsModule, VercelImagePipe],
+  imports: [FormsModule],
   templateUrl: './contact.html',
 })
 export class ContactSectionComponent {
