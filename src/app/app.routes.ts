@@ -1,23 +1,15 @@
-import { TournamentContact } from './models/tournament-contact.model';
-import { Routes } from '@angular/router';
-import { TournamentCardComponent } from './features/home/tournamentsSection/tournamentCard/tournamentCard';
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
 import { NotFoundComponent } from './core/404/not-found';
-// Importa el tipo Routes, necesario para definir el array de rutas principal de Angular.
 
 export const routes: Routes = [
-  // ========================
-  // Ruta Home (Raíz "/")
-  // ========================
   {
-    path: '', // URL raíz ("/")
+    path: '',
     title: 'Portada',
     loadComponent: () =>
       import('./core/landing/split-landing/split-landing').then(
         (m) => m.SplitLanding
       ),
-    // Lazy-load del componente App (componente raíz).
-    // Si quieres una landing principal aquí, debe ser el componente que sirva de página de inicio.
-    // Es habitual poner "App" aquí cuando no tienes una landing específica.
   },
   {
     path: 'home',
@@ -32,7 +24,6 @@ export const routes: Routes = [
         (m) => m.HeroSection
       ),
   },
-
   {
     path: 'tournaments',
     title: 'tournaments',
@@ -41,7 +32,6 @@ export const routes: Routes = [
         (m) => m.TournamentSectionComponent
       ),
   },
-
   {
     path: 'location',
     title: 'location',
@@ -50,14 +40,12 @@ export const routes: Routes = [
         (m) => m.LocationSectionComponent
       ),
   },
-
   {
     path: 'map',
     title: 'map',
     loadComponent: () =>
       import('./components/map/mapComponent').then((m) => m.default),
   },
-
   {
     path: 'contact',
     title: 'contact',
@@ -66,7 +54,6 @@ export const routes: Routes = [
         (m) => m.ContactSectionComponent
       ),
   },
-
   {
     path: 'avisolegal',
     title: 'avisolegal',
@@ -75,7 +62,6 @@ export const routes: Routes = [
         (m) => m.AvisoLegalComponent
       ),
   },
-
   {
     path: 'politicaprivacidad',
     title: 'politicaprivacidad',
@@ -84,7 +70,6 @@ export const routes: Routes = [
         (m) => m.PoliticaPrivacidadComponent
       ),
   },
-
   {
     path: 'cookiesconsent',
     title: 'cookies-consent',
@@ -93,9 +78,14 @@ export const routes: Routes = [
         (m) => m.CookieConsentComponent
       ),
   },
-
   {
     path: '**',
-    component: NotFoundComponent, // Redirige a la Home si la URL no coincide con ninguna ruta
+    component: NotFoundComponent,
   },
 ];
+
+@NgModule({
+  imports: [RouterModule.forRoot(routes, { useHash: true })],
+  exports: [RouterModule],
+})
+export class AppRoutingModule {}
