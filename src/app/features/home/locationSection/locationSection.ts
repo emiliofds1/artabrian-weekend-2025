@@ -62,7 +62,7 @@ export class LocationSectionComponent implements AfterViewInit, OnChanges {
         this.imagePaths.length;
       this.scrollToImage(this.currentIndex);
       this.imageTransitioning = false;
-    }, 200);
+    }, 300);
   }
 
   goNext() {
@@ -71,7 +71,7 @@ export class LocationSectionComponent implements AfterViewInit, OnChanges {
       this.currentIndex = (this.currentIndex + 1) % this.imagePaths.length;
       this.scrollToImage(this.currentIndex);
       this.imageTransitioning = false;
-    }, 200);
+    }, 300);
   }
 
   scrollToImage(index: number) {
