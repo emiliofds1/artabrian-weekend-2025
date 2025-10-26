@@ -265,7 +265,7 @@
         "description": "10% recaudación en Ártabros + Material Promocional"
       }
     ],
-    "backgroundPath": "assets/images/swu/bg-team-trios.jpg"
+    "backgroundPath": "assets/images/swu/bg-team-trios.webp"
   },
 
   {
@@ -284,7 +284,7 @@
         "description": "30% recaudación en Ártabros"
       }
     ],
-    "backgroundPath": "assets/images/swu/swu-bg-1.jpg"
+    "backgroundPath": "assets/images/swu/swu-bg-1.webp"
   },
 
   {
@@ -315,7 +315,7 @@
         "description": "Material Promocional"
       }
     ],
-    "backgroundPath": "assets/images/swu/swu-bg-2.jpg"
+    "backgroundPath": "assets/images/swu/swu-bg-2.webp"
   },
   {
     "id": "swu",
@@ -333,7 +333,7 @@
         "description": "30% recaudación en Ártabros"
       }
     ],
-    "backgroundPath": "assets/images/swu/swu-bg-1.jpg"
+    "backgroundPath": "assets/images/swu/swu-bg-1.webp"
   },
   {
     "id": "swu",
@@ -367,6 +367,6 @@
         "description": "Material Promocional"
       }
     ],
-    "backgroundPath": "assets/images/swu/swu-bg-3.jpg"
+    "backgroundPath": "assets/images/swu/swu-bg-3.webp"
   }
 ]
