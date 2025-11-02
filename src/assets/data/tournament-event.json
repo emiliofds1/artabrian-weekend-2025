@@ -47,7 +47,7 @@
     "name": "legacy",
     "day": "sábado",
     "hour": "10:00",
-    "prize": 30,
+    "prize": 40,
     "details": "Máximo de 10 proxies; las dual lands son de la edición 'Revised'",
     "rewards": [
       {
@@ -102,7 +102,7 @@
     "name": "standard",
     "day": "sábado",
     "hour": "12:00",
-    "prize": 30,
+    "prize": 40,
     "rewards": [
       {
         "standing": "1º Puesto",
@@ -173,7 +173,7 @@
     "name": "modern",
     "day": "domingo",
     "hour": "10:00",
-    "prize": 30,
+    "prize": 40,
     "rewards": [
       {
         "standing": "1º Puesto",
