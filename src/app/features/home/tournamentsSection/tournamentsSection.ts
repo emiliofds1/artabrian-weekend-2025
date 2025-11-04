@@ -22,13 +22,15 @@ export class TournamentSectionComponent {
   // Array of days for tabs
   readonly days = ['viernes', 'sábado', 'domingo'] as const;
 
-  // Compute events by TCG and day
+  // Compute events by TCG and day with filter to omit "standard" on Saturday
   private eventsByDay = computed(() => {
     const id = this.tcgId ?? 'mtg';
     const events = this.eventsSignal().filter((e) => e.id === id);
     return {
       viernes: events.filter((e) => e.day.toLowerCase() === 'viernes'),
-      sábado: events.filter((e) => e.day.toLowerCase() === 'sábado' || e.day.toLowerCase() === 'sábado'),
+      sábado: events
+        .filter((e) => e.day.toLowerCase() === 'sábado')
+        .filter((e) => e.name !== 'standard'), // Omitir solo "standard" en sábado
       domingo: events.filter((e) => e.day.toLowerCase() === 'domingo'),
     };
   });
@@ -44,7 +46,7 @@ export class TournamentSectionComponent {
     () =>
       this.selectedDay() === 'sábado' &&
       this.tcgId === 'mtg' &&
-      this.sabadoEvents().length === 4
+      this.sabadoEvents().length === 3
   );
 
   isDomingoMtgLarge = computed(
@@ -53,7 +55,7 @@ export class TournamentSectionComponent {
 
   sabadoGridCols = computed(() =>
     this.isSabadoMtg4Eventos()
-      ? 'grid-cols-1 md:grid-cols-4 gap-4 lg:gap-6'
+      ? 'grid-cols-1 md:grid-cols-3 gap-4 lg:gap-6'
       : this.tcgId === 'swu'
       ? 'grid-cols-1 md:grid-cols-2 gap-12'
       : 'grid-cols-1 md:grid-cols-4 gap-12'
